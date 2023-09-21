@@ -1,10 +1,12 @@
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
+using CarParkSystem.Core.Services;
 using CarParkSystem.Core.UnitOfWork;
 using CarParkSystem.Repository;
 using CarParkSystem.Repository.Repositories;
 using CarParkSystem.Repository.UnitOfWorks;
 using CarParkSystem.Service.Mapping;
+using CarParkSystem.Service.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -20,6 +22,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
