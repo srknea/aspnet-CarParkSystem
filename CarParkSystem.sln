@@ -3,7 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkSystem.Core", "CarParkSystem.Core\CarParkSystem.Core.csproj", "{2C997EA7-B37C-48FA-835E-9965297579AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkSystem.Repository", "CarParkSystem.Repository\CarParkSystem.Repository.csproj", "{73DAB62D-19AB-47C3-ACAE-34183C764806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkSystem.Service", "CarParkSystem.Service\CarParkSystem.Service.csproj", "{66B6E08B-C2C1-4BAC-9F22-734220EBE062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkSystem.API", "CarParkSystem.API\CarParkSystem.API.csproj", "{8C20A7AE-15AA-4537-A4EE-7A5BC931E2A9}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C997EA7-B37C-48FA-835E-9965297579AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C997EA7-B37C-48FA-835E-9965297579AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C997EA7-B37C-48FA-835E-9965297579AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C997EA7-B37C-48FA-835E-9965297579AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73DAB62D-19AB-47C3-ACAE-34183C764806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73DAB62D-19AB-47C3-ACAE-34183C764806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73DAB62D-19AB-47C3-ACAE-34183C764806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73DAB62D-19AB-47C3-ACAE-34183C764806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B6E08B-C2C1-4BAC-9F22-734220EBE062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B6E08B-C2C1-4BAC-9F22-734220EBE062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B6E08B-C2C1-4BAC-9F22-734220EBE062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B6E08B-C2C1-4BAC-9F22-734220EBE062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C20A7AE-15AA-4537-A4EE-7A5BC931E2A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C20A7AE-15AA-4537-A4EE-7A5BC931E2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C20A7AE-15AA-4537-A4EE-7A5BC931E2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C20A7AE-15AA-4537-A4EE-7A5BC931E2A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
