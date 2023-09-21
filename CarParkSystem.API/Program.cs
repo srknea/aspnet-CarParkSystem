@@ -1,5 +1,10 @@
 using CarParkSystem.Core.Model;
+using CarParkSystem.Core.Repositories;
+using CarParkSystem.Core.UnitOfWork;
 using CarParkSystem.Repository;
+using CarParkSystem.Repository.Repositories;
+using CarParkSystem.Repository.UnitOfWorks;
+using CarParkSystem.Service.Mapping;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -12,6 +17,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
