@@ -1,3 +1,4 @@
+using CarParkSystem.API.Middlewares;
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
@@ -51,6 +52,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException();
 
 app.UseAuthorization();
 

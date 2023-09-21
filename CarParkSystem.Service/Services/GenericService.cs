@@ -1,6 +1,7 @@
 ﻿using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Core.UnitOfWork;
+using CarParkSystem.Service.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,12 +50,12 @@ namespace CarParkSystem.Service.Services
         public async Task<T> GetByIdAsync(int id)
         {
             var hasProduct = await _repository.GetByIdAsync(id);
-            /*
+            
             if (hasProduct == null)
             {
-                throw new NotFoundException($"{typeof(T).Name} not found");
+                throw new NotFoundException($"{typeof(T).Name} with Id '{id}' not found");
             }
-            */
+
             return hasProduct;
         }
 
