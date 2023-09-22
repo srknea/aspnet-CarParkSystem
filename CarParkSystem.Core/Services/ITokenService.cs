@@ -1,4 +1,5 @@
-﻿using CarParkSystem.Core.DTOs;
+﻿using CarParkSystem.Core.Configuration;
+using CarParkSystem.Core.DTOs;
 using CarParkSystem.Core.Model;
 using System;
 using System.Collections.Generic;
