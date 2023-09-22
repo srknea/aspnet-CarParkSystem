@@ -1,8 +1,8 @@
 ﻿using CarParkSystem.Core.Configuration;
 using CarParkSystem.Core.Configurations;
-using CarParkSystem.Core.DTOs;
-using CarParkSystem.Core.Model;
-using CarParkSystem.Core.Services;
+using CarParkSystem.Core.DTOs.Auth;
+using CarParkSystem.Core.Model.Auth;
+using CarParkSystem.Core.Services.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -15,7 +15,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Service.Services
+namespace CarParkSystem.Service.Services.Auth
 {
     public class TokenService : ITokenService
     {
@@ -31,7 +31,7 @@ namespace CarParkSystem.Service.Services
 
         private string CreateRefreshToken()
         {
-            var numberByte = new Byte[32];
+            var numberByte = new byte[32];
 
             using var rnd = RandomNumberGenerator.Create();
 

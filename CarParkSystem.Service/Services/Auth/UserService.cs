@@ -2,8 +2,9 @@
 using AutoMapper.Internal.Mappers;
 using Azure;
 using CarParkSystem.Core.DTOs;
-using CarParkSystem.Core.Model;
-using CarParkSystem.Core.Services;
+using CarParkSystem.Core.DTOs.Auth;
+using CarParkSystem.Core.Model.Auth;
+using CarParkSystem.Core.Services.Auth;
 using CarParkSystem.Service.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -12,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Service.Services
+namespace CarParkSystem.Service.Services.Auth
 {
     public class UserService : IUserService
     {

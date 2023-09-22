@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Service.Services
+namespace CarParkSystem.Service.Services.Auth
 {
     public static class SignService
     {

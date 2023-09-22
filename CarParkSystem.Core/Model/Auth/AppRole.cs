@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Core.Model
+namespace CarParkSystem.Core.Model.Auth
 {
-    public class AppUser : IdentityUser
+    public class AppRole : IdentityRole
     {
 
     }

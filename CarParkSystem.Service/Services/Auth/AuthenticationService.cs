@@ -1,9 +1,10 @@
 ﻿using Azure;
 using CarParkSystem.Core.Configuration;
 using CarParkSystem.Core.DTOs;
-using CarParkSystem.Core.Model;
+using CarParkSystem.Core.DTOs.Auth;
+using CarParkSystem.Core.Model.Auth;
 using CarParkSystem.Core.Repositories;
-using CarParkSystem.Core.Services;
+using CarParkSystem.Core.Services.Auth;
 using CarParkSystem.Core.UnitOfWork;
 using CarParkSystem.Service.Exceptions;
 using Microsoft.AspNetCore.Identity;
@@ -15,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Service.Services
+namespace CarParkSystem.Service.Services.Auth
 {
     public class AuthenticationService : IAuthenticationService
     {

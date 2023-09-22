@@ -1,4 +1,5 @@
 ﻿using CarParkSystem.Core.Model;
+using CarParkSystem.Core.Model.Auth;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;

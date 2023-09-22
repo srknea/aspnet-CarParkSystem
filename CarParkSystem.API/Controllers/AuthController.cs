@@ -1,5 +1,5 @@
-﻿using CarParkSystem.Core.DTOs;
-using CarParkSystem.Core.Services;
+﻿using CarParkSystem.Core.DTOs.Auth;
+using CarParkSystem.Core.Services.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

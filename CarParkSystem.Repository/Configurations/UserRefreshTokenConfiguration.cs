@@ -1,4 +1,4 @@
-﻿using CarParkSystem.Core.Model;
+﻿using CarParkSystem.Core.Model.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

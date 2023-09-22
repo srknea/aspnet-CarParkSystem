@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarParkSystem.Core.Model.Common;
 
 namespace CarParkSystem.Core.Model
 {

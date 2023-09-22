@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarParkSystem.Core.DTOs
+namespace CarParkSystem.Core.DTOs.Auth
 {
     public class ClientTokenDto
     {
