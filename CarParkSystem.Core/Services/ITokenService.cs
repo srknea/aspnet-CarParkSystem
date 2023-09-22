@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarParkSystem.Core.Services
 {
-    internal interface ITokenService
+    public interface ITokenService
     {
         TokenDto CreateToken(AppUser userApp);
         ClientTokenDto CreateTokenByClient(Client client);
