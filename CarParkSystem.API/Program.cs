@@ -1,4 +1,5 @@
 using CarParkSystem.API.Middlewares;
+using CarParkSystem.Core.Configuration;
 using CarParkSystem.Core.Configurations;
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
@@ -44,6 +45,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(Opt =>
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
+
+builder.Services.Configure<Client>(builder.Configuration.GetSection("Clients"));
 
 var app = builder.Build();
 
