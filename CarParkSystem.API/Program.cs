@@ -1,4 +1,5 @@
 using CarParkSystem.API.Middlewares;
+using CarParkSystem.Core.Configurations;
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
@@ -41,6 +42,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(Opt =>
     Opt.User.RequireUniqueEmail = true; // Email adresi unique olmalý
     Opt.Password.RequireNonAlphanumeric = false; // *? gibi karakterlerin kullanýmýný zorunlu tutma... (Normalde default olarak zorunludur)
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOption"));
 
 var app = builder.Build();
 
