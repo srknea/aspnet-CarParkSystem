@@ -22,10 +22,13 @@ namespace CarParkSystem.Repository
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<FirstClassVehicleFeature> FirstClassVehicleFeatures { get; set; }
         public DbSet<SecondClassVehicleFeature> SecondClassVehicleFeatures { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
             modelBuilder.Entity<Vehicle>().HasOne(x => x.FirstClassVehicleFeature).WithOne(x => x.Vehicle).HasForeignKey<FirstClassVehicleFeature>(x => x.Id); // Bire-bir ilişkide primary key'i aynı zamanda foreign key olarak ayarlandı.
             modelBuilder.Entity<Vehicle>().HasOne(x => x.SecondClassVehicleFeature).WithOne(x => x.Vehicle).HasForeignKey<SecondClassVehicleFeature>(x => x.Id);
