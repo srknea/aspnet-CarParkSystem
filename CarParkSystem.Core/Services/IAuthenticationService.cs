@@ -12,6 +12,6 @@ namespace CarParkSystem.Core.Services
         Task<CustomResponseDto<TokenDto>> CreateTokenAsync(LoginDto loginDto);
         Task<CustomResponseDto<TokenDto>> CreateTokenByRefreshToken(string refreshToken);
         Task<CustomResponseDto<NoContentDto>> RevokeRefreshToken(string refreshToken);
-        Task<CustomResponseDto<ClientTokenDto>> CreateTokenByClient(ClientLoginDto clientLoginDto);
+        CustomResponseDto<ClientTokenDto> CreateTokenByClient(ClientLoginDto clientLoginDto);
     }
 }
