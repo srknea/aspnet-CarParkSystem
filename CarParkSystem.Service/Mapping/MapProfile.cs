@@ -14,6 +14,12 @@ namespace CarParkSystem.Service.Mapping
         public MapProfile()
         {
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CategoryWithVehiclesDto>();
+            CreateMap<CategoryUpdateDto, Category>();
+
+            CreateMap<Vehicle, VehicleDto>().ReverseMap();
+            CreateMap<VehicleUpdateDto, Vehicle>();
+            CreateMap<Vehicle, VehicleWithCategoryDto>();
         }
     }
 }

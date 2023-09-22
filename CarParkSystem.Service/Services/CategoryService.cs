@@ -4,6 +4,7 @@ using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Core.UnitOfWork;
+using CarParkSystem.Service.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,20 @@ namespace CarParkSystem.Service.Services
             _mapper = mapper;
         }
 
-        public Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByWithVehicleAsync(int categoryId)
+        public async Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByWithVehicleAsync(int categoryId)
         {
-            throw new NotImplementedException();
+            var hasCategory = await _categoryRepository.GetByIdAsync(categoryId);
+
+            if (hasCategory == null)
+            {
+                throw new NotFoundException($"Category with Id '{categoryId}' not found");
+            }
+
+            var category = await _categoryRepository.GetSingleCategoryByWithVehicleAsync(categoryId);
+
+            var categoryDto = _mapper.Map<CategoryWithVehiclesDto>(category);
+            
+            return CustomResponseDto<CategoryWithVehiclesDto>.Success(200, categoryDto);
         }
     }
 }

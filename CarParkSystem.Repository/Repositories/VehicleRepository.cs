@@ -11,15 +11,16 @@ using System.Threading.Tasks;
 
 namespace CarParkSystem.Repository.Repositories
 {
-    public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
+    public class VehicleRepository : GenericRepository<Vehicle>, IVehicleRepository
     {
-        public CategoryRepository(AppDbContext context) : base(context)
+        public VehicleRepository(AppDbContext context) : base(context)
         {
         }
 
-        public async Task<Category> GetSingleCategoryByWithVehicleAsync(int categoryId)
+        public async Task<List<Vehicle>> GetProductWithCategory()
         {
-            return await _context.Categories.Include(x => x.Vehicles).Where(x => x.Id == categoryId).SingleOrDefaultAsync(x => x.Id == categoryId);
+            // Eager Loading
+            return await _context.Vehicles.Include(x => x.Category).ToListAsync();
         }
     }
 }
