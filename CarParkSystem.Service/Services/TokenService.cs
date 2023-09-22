@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CarParkSystem.Service.Services
 {
-    internal class TokenService : ITokenService
+    public class TokenService : ITokenService
     {
         private readonly UserManager<AppUser> _userManager;
 
