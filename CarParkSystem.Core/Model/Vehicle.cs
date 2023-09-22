@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarParkSystem.Core.Model
 {
-    public class Vehicle
+    public class Vehicle : BaseEntity
     {
         public string Color { get; set; }
         public string LicensePlate { get; set; }
