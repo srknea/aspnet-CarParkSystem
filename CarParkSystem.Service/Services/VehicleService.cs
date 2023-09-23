@@ -137,7 +137,6 @@ namespace CarParkSystem.Service.Services
 
             if (hasVehicle.Category.Name == "Second Class")
             {
-                // TODO: Burada gerekli bussiness işlemi yapılacak
                 return CustomResponseDto<NoContentDto>.Success(200);
             }
             
