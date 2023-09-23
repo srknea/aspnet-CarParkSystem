@@ -20,6 +20,15 @@ namespace CarParkSystem.Repository.Repositories
         {
         }
 
+        public async Task<Vehicle> GetSingleVehicleByIdWithCategoryAndFeaturesAsync(int vehicleId)
+        {
+            return await _context.Vehicles.Include(x => x.Category).ThenInclude(x => x.CarParks)
+                                           .Where(x => x.Id == vehicleId)
+                                          .Include(x => x.FirstClassVehicleFeature)
+                                          .Include(x => x.SecondClassVehicleFeature)
+                                          .SingleOrDefaultAsync(x => x.Id == vehicleId);
+        }
+
         public async Task<List<Vehicle>> GetVehicleWithCategory()
         {
             // Eager Loading

@@ -4,6 +4,7 @@ using CarParkSystem.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarParkSystem.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230923123229_ParkingCoefficientProperty")]
+    partial class ParkingCoefficientProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace CarParkSystem.Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CarParkCategory", b =>
-                {
-                    b.Property<int>("CarParksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CarParksId", "CategoriesId");
-
-                    b.HasIndex("CategoriesId");
-
-                    b.ToTable("CarParkCategory");
-                });
 
             modelBuilder.Entity("CarParkSystem.Core.Model.Auth.AppRole", b =>
                 {
@@ -145,29 +133,6 @@ namespace CarParkSystem.Repository.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("UserRefreshTokens");
-                });
-
-            modelBuilder.Entity("CarParkSystem.Core.Model.CarPark", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("HourlyRate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsOpen")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CarPark");
                 });
 
             modelBuilder.Entity("CarParkSystem.Core.Model.Category", b =>
@@ -371,21 +336,6 @@ namespace CarParkSystem.Repository.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("CarParkCategory", b =>
-                {
-                    b.HasOne("CarParkSystem.Core.Model.CarPark", null)
-                        .WithMany()
-                        .HasForeignKey("CarParksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CarParkSystem.Core.Model.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CarParkSystem.Core.Model.FirstClassVehicleFeature", b =>

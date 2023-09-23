@@ -15,5 +15,6 @@ namespace CarParkSystem.Core.DTOs
         public string ModelName { get; set; }
         public double EnginePowerKilowatt { get; set; } // Engine power in kW 
         public int CategoryId { get; set; }
+        public DateTime EntryTime { get; set; }
     }
 }

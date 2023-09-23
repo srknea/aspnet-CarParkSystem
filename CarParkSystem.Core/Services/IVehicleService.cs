@@ -10,10 +10,12 @@ namespace CarParkSystem.Core.Services
 {
     public interface IVehicleService : IGenericService<Vehicle>
     {
+        Task<CustomResponseDto<FeeDto>> ExitVehicle(int vehicleId);
+
         Task<CustomResponseDto<List<VehicleWithCategoryDto>>> GetVehicleWithCategory();
 
         Task<CustomResponseDto<List<VehicleWithFeaturesDto>>> GetVehicleWithFeatures();
-        
+
         Task<CustomResponseDto<NoContentDto>> CarWashForFirstClassVehicle(int vehicleId);
 
         Task<CustomResponseDto<NoContentDto>> TireChangeForSecondClassVehicle(int vehicleId);

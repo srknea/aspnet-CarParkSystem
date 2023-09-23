@@ -38,7 +38,7 @@ namespace CarParkSystem.Service.Services
             
             return CustomResponseDto<CategoryWithVehiclesDto>.Success(200, categoryDto);
         }
-
+        
         public async Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByNameWithVehicleAsync(string categoryName)
         {
             var hasCategory = await _categoryRepository.GetSingleCategoryByName(categoryName);

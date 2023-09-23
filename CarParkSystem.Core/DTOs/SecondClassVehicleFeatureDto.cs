@@ -10,5 +10,6 @@ namespace CarParkSystem.Core.DTOs
     {
         public decimal TrunkVolume { get; set; }
         public bool HasSpareTire { get; set; }
+        public int ParkingCoefficient { get; set; } = 2;
     }
 }

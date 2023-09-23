@@ -2,10 +2,14 @@
 using CarParkSystem.API.Controllers;
 using CarParkSystem.Core.DTOs;
 using CarParkSystem.Core.Model;
+using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
+using CarParkSystem.Service.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Xml;
 
 namespace CarParkSystem.API.Controllers
 {
@@ -15,6 +19,7 @@ namespace CarParkSystem.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IVehicleService _vehicleService;
+
         public VehiclesController(IMapper mapper, IVehicleService vehicleService)
         {
             _mapper = mapper;
@@ -74,7 +79,7 @@ namespace CarParkSystem.API.Controllers
             
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
-
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
@@ -83,8 +88,16 @@ namespace CarParkSystem.API.Controllers
             await _vehicleService.RemoveAsync(vehicle);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        } 
+
+        [HttpPost("{vehicleId}")]
+        public async Task<IActionResult> ExitVehicle(int vehicleId)
+        {
+            var resut = await _vehicleService.ExitVehicle(vehicleId);
+
+            return Ok(resut);
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetVehiclesWithCategory() {
             return CreateActionResult(await _vehicleService.GetVehicleWithCategory());

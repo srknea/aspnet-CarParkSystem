@@ -12,7 +12,7 @@ namespace CarParkSystem.Core.Model
     {
         public bool HasAutomaticPilot { get; set; }
         public decimal Price { get; set; }
-        //public int ParkingCoefficient { get; set; } = 3;
+        public int ParkingCoefficient { get; set; } = 3;
 
         public Vehicle Vehicle { get; set; }
     }

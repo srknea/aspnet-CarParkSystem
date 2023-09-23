@@ -10,6 +10,7 @@ namespace CarParkSystem.Core.Model
     public class Category : BaseEntity
     {
         public string Name { get; set; }
+        public List<CarPark> CarParks { get; set; } = new List<CarPark>();
         public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
     }
 }

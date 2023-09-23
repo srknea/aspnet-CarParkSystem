@@ -10,5 +10,7 @@ namespace CarParkSystem.Core.DTOs
     {
         public bool HasAutomaticPilot { get; set; }
         public decimal Price { get; set; }
+
+        public int ParkingCoefficient { get; set; } = 3;
     }
 }
