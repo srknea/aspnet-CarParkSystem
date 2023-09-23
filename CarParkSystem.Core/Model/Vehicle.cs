@@ -14,7 +14,8 @@ namespace CarParkSystem.Core.Model
         public int ModelYear { get; set; }
         public string ModelName { get; set; }
         public double EnginePowerKilowatt { get; set; } // Engine power in kW
-
+        public DateTime EntryTime { get; set; }
+        public DateTime? ExitTime { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 

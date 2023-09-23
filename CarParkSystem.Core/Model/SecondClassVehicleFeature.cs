@@ -12,7 +12,8 @@ namespace CarParkSystem.Core.Model
     {
         public decimal TrunkVolume { get; set; }
         public bool HasSpareTire { get; set; }
-        public int ParkingCoefficient { get; set; } = 2;
+        
+        // public int ParkingCoefficient { get; set; } = 2;
 
         public Vehicle Vehicle { get; set; }
     }

@@ -5,6 +5,7 @@ using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarParkSystem.API.Controllers
 {
@@ -39,13 +40,31 @@ namespace CarParkSystem.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(VehicleDto vehicleDto)
+        public async Task<IActionResult> EnterStandardClassVehicle(VehicleDto vehicleDto)
         {
             var vehicle = await _vehicleService.AddAsync(_mapper.Map<Vehicle>(vehicleDto));
             var vehiclesDto = _mapper.Map<VehicleDto>(vehicle);
 
             return CreateActionResult(CustomResponseDto<VehicleDto>.Success(201, vehiclesDto));
             // 201 : Oluşturuldu anlamında kullanılır. İşlem başarılı ise 201 döndürülebilir.
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EnterFirstClassVehicle(VehicleWithFirstClassVehicleFeatureDto vehicleDto)
+        {
+            var vehicle = await _vehicleService.AddAsync(_mapper.Map<Vehicle>(vehicleDto));
+            var vehiclesDto = _mapper.Map<VehicleWithFirstClassVehicleFeatureDto>(vehicle);
+
+            return CreateActionResult(CustomResponseDto<VehicleWithFirstClassVehicleFeatureDto>.Success(201, vehiclesDto));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EnterSecondClassVehicle(VehicleWithSecondClassVehicleFeatureDto vehicleDto)
+        {
+            var vehicle = await _vehicleService.AddAsync(_mapper.Map<Vehicle>(vehicleDto));
+            var vehiclesDto = _mapper.Map<VehicleWithSecondClassVehicleFeatureDto>(vehicle);
+
+            return CreateActionResult(CustomResponseDto<VehicleWithSecondClassVehicleFeatureDto>.Success(201, vehiclesDto));
         }
 
         [HttpPut]

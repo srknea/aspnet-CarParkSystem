@@ -5,6 +5,7 @@ using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Core.UnitOfWork;
 using CarParkSystem.Repository.Repositories;
+using CarParkSystem.Repository.UnitOfWorks;
 using CarParkSystem.Service.Exceptions;
 using CarParkSystem.Service.Services;
 using System;
@@ -19,6 +20,7 @@ namespace CarParkSystem.Service.Services
     {
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public VehicleService(IGenericRepository<Vehicle> repository, IUnitOfWork unitOfWork, IMapper mapper, IVehicleRepository vehicleRepository) : base(repository, unitOfWork)
         {
