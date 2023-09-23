@@ -53,14 +53,32 @@ namespace CarParkSystem.Service.Services
                 throw new NotFoundException($"Vehicle with Id '{vehicleId}' not found");
             }
 
-            if (hasVehicle.Category.Name != "First Class")
+            if (hasVehicle.Category.Name == "First Class")
             {
-                throw new ClientSideException("Bu araç 1. sınıf bir araç değil, araç yıkama hizmeti sunulamaz.");
+                return CustomResponseDto<NoContentDto>.Success(200);
             }
 
             // TODO: Burada gerekli bussiness işlemi yapılacak
 
-            return CustomResponseDto<NoContentDto>.Success(200);
+            throw new ClientSideException("Bu araç 1. sınıf bir araç değil, araç yıkama hizmeti sunulamaz.");
+        }
+
+        public async Task<CustomResponseDto<NoContentDto>> TireChangeForSecondClassVehicle(int vehicleId)
+        {
+            var hasVehicle = await _vehicleRepository.GetSingleVehicleWithCategory(vehicleId);
+
+            if (hasVehicle == null)
+            {
+                throw new NotFoundException($"Vehicle with Id '{vehicleId}' not found");
+            }
+
+            if (hasVehicle.Category.Name == "Second Class")
+            {
+                // TODO: Burada gerekli bussiness işlemi yapılacak
+                return CustomResponseDto<NoContentDto>.Success(200);
+            }
+            
+            throw new ClientSideException("Bu araç 2. sınıf bir araç değil, lastik değiştirme hizmeti sunulamaz.");
         }
     }
 }

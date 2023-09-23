@@ -83,5 +83,12 @@ namespace CarParkSystem.API.Controllers
         {
             return CreateActionResult(await _vehicleService.CarWashForFirstClassVehicle(vehicleId));
         }
+
+        [HttpPost("{vehicleId}")]
+        public async Task<IActionResult> TireChangeForSecondClassVehicle(int vehicleId)
+        {
+            return CreateActionResult(await _vehicleService.TireChangeForSecondClassVehicle(vehicleId));
+        }
     }
 }
+    
