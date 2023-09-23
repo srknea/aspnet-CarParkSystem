@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CarParkSystem.Core.DTOs
 {
-    public class BaseDto
+    public class FirstClassVehicleFeatureDto
     {
-        public int Id { get; set; }
-        // public DateTime CreatedDate { get; set; }
-        // public DateTime UpdatedDate { get; set; }
+        public bool HasAutomaticPilot { get; set; }
+        public decimal Price { get; set; }
     }
 }

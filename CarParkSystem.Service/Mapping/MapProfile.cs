@@ -20,6 +20,10 @@ namespace CarParkSystem.Service.Mapping
             CreateMap<Vehicle, VehicleDto>().ReverseMap();
             CreateMap<VehicleUpdateDto, Vehicle>();
             CreateMap<Vehicle, VehicleWithCategoryDto>();
+            CreateMap<Vehicle, VehicleWithFeaturesDto>();
+            CreateMap<FirstClassVehicleFeature, FirstClassVehicleFeatureDto>().ReverseMap();
+            CreateMap<SecondClassVehicleFeature, SecondClassVehicleFeatureDto>().ReverseMap();
+
         }
     }
 }

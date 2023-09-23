@@ -11,6 +11,7 @@ namespace CarParkSystem.Core.Repositories
 {
     public interface IVehicleRepository : IGenericRepository<Vehicle>
     {
-        Task<List<Vehicle>> GetProductWithCategory();
+        Task<List<Vehicle>> GetVehicleWithCategory();
+        Task<List<Vehicle>> GetVehicleWithFeatures();
     }
 }

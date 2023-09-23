@@ -23,7 +23,7 @@ namespace CarParkSystem.API.Middlewares
                     {
                         ClientSideException => 400, // ClientSideException tipinde bir hata yakalarsak 400 döndürüyoruz.
                         NotFoundException => 404, // NotFoundException tipinde bir hata yakalarsak 404 döndürüyoruz.
-                        _ => 500 // Yukarıdaki tiplerden biri değilse 500 döndürüyoruz.
+                        //_ => 500 // Yukarıdaki tiplerden biri değilse 500 döndürüyoruz.
                     };
 
                     context.Response.StatusCode = statusCode;

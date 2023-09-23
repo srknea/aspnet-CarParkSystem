@@ -24,13 +24,22 @@ namespace CarParkSystem.Service.Services
             _vehicleRepository = vehicleRepository;
         }
 
-        public async Task<CustomResponseDto<List<VehicleWithCategoryDto>>> GetProductWithCategory()
+        public async Task<CustomResponseDto<List<VehicleWithCategoryDto>>> GetVehicleWithCategory()
         {
-            var products = await _vehicleRepository.GetProductWithCategory();
+            var products = await _vehicleRepository.GetVehicleWithCategory();
 
             var productsDto = _mapper.Map<List<VehicleWithCategoryDto>>(products);
 
             return CustomResponseDto<List<VehicleWithCategoryDto>>.Success(200,productsDto);
+        }
+
+        public async Task<CustomResponseDto<List<VehicleWithFeaturesDto>>> GetVehicleWithFeatures()
+        {
+            var products = await _vehicleRepository.GetVehicleWithFeatures();
+
+            var productsDto = _mapper.Map<List<VehicleWithFeaturesDto>>(products);
+
+            return CustomResponseDto<List<VehicleWithFeaturesDto>>.Success(200, productsDto);
         }
     }
 }
