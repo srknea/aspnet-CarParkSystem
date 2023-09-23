@@ -79,5 +79,11 @@ namespace CarParkSystem.API.Controllers
         {
             return CreateActionResult(await _categoryService.GetSingleCategoryByWithVehicleAsync(categoryId));
         }
+
+        [HttpGet("[action]/{categoryName}")]
+        public async Task<IActionResult> GetSingleCategoryByNameWithVehicles(string categoryName)
+        {
+            return CreateActionResult(await _categoryService.GetSingleCategoryByNameWithVehicleAsync(categoryName));
+        }
     }
 }

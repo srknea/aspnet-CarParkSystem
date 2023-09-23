@@ -13,5 +13,6 @@ namespace CarParkSystem.Core.Repositories
     {
         Task<List<Vehicle>> GetVehicleWithCategory();
         Task<List<Vehicle>> GetVehicleWithFeatures();
+        Task<Vehicle> GetSingleVehicleWithCategory(int vehicleId);
     }
 }

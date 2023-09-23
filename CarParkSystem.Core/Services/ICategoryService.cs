@@ -10,6 +10,8 @@ namespace CarParkSystem.Core.Services
 {
     public interface ICategoryService : IGenericService<Category>
     {
-        public Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByWithVehicleAsync(int categoryId);
+        Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByWithVehicleAsync(int categoryId);
+
+        Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByNameWithVehicleAsync(string categoryName);
     }
 }

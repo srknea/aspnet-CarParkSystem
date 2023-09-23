@@ -13,5 +13,7 @@ namespace CarParkSystem.Core.Services
         Task<CustomResponseDto<List<VehicleWithCategoryDto>>> GetVehicleWithCategory();
 
         Task<CustomResponseDto<List<VehicleWithFeaturesDto>>> GetVehicleWithFeatures();
+        
+        Task<CustomResponseDto<NoContentDto>> CarWashForFirstClassVehicle(int vehicleId);
     }
 }

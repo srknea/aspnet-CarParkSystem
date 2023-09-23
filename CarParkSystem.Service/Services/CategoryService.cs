@@ -32,10 +32,26 @@ namespace CarParkSystem.Service.Services
                 throw new NotFoundException($"Category with Id '{categoryId}' not found");
             }
 
-            var category = await _categoryRepository.GetSingleCategoryByWithVehicleAsync(categoryId);
+            var category = await _categoryRepository.GetSingleCategoryByIdWithVehicleAsync(categoryId);
 
             var categoryDto = _mapper.Map<CategoryWithVehiclesDto>(category);
             
+            return CustomResponseDto<CategoryWithVehiclesDto>.Success(200, categoryDto);
+        }
+
+        public async Task<CustomResponseDto<CategoryWithVehiclesDto>> GetSingleCategoryByNameWithVehicleAsync(string categoryName)
+        {
+            var hasCategory = await _categoryRepository.GetSingleCategoryByName(categoryName);
+
+            if (hasCategory == null)
+            {
+                throw new NotFoundException($"Category with Name '{categoryName}' not found");
+            }
+
+            var categoryWithVehicle = await _categoryRepository.GetSingleCategoryByNameWithVehicleAsync(categoryName);
+
+            var categoryDto = _mapper.Map<CategoryWithVehiclesDto>(categoryWithVehicle);
+
             return CustomResponseDto<CategoryWithVehiclesDto>.Success(200, categoryDto);
         }
     }

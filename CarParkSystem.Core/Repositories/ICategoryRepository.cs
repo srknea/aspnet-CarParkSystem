@@ -9,6 +9,10 @@ namespace CarParkSystem.Core.Repositories
 {
     public interface ICategoryRepository : IGenericRepository<Category>
     {
-        Task<Category> GetSingleCategoryByWithVehicleAsync(int id);
+        Task<Category> GetSingleCategoryByIdWithVehicleAsync(int categoryId);
+
+        Task<Category> GetSingleCategoryByName(string categoryName);
+
+        Task<Category> GetSingleCategoryByNameWithVehicleAsync(string categoryName);
     }
 }

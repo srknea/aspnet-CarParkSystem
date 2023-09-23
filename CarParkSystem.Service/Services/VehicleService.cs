@@ -4,6 +4,8 @@ using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Core.UnitOfWork;
+using CarParkSystem.Repository.Repositories;
+using CarParkSystem.Service.Exceptions;
 using CarParkSystem.Service.Services;
 using System;
 using System.Collections.Generic;
@@ -40,6 +42,25 @@ namespace CarParkSystem.Service.Services
             var productsDto = _mapper.Map<List<VehicleWithFeaturesDto>>(products);
 
             return CustomResponseDto<List<VehicleWithFeaturesDto>>.Success(200, productsDto);
+        }
+
+        public async Task<CustomResponseDto<NoContentDto>> CarWashForFirstClassVehicle(int vehicleId)
+        {
+            var hasVehicle = await _vehicleRepository.GetSingleVehicleWithCategory(vehicleId);
+
+            if (hasVehicle == null)
+            {
+                throw new NotFoundException($"Vehicle with Id '{vehicleId}' not found");
+            }
+
+            if (hasVehicle.Category.Name != "First Class")
+            {
+                throw new ClientSideException("Bu araç 1. sınıf bir araç değil, araç yıkama hizmeti sunulamaz.");
+            }
+
+            // TODO: Burada gerekli bussiness işlemi yapılacak
+
+            return CustomResponseDto<NoContentDto>.Success(200);
         }
     }
 }
