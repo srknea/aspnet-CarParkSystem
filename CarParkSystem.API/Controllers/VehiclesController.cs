@@ -4,6 +4,7 @@ using CarParkSystem.Core.DTOs;
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
+using CarParkSystem.Repository.Repositories;
 using CarParkSystem.Service.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +21,15 @@ namespace CarParkSystem.API.Controllers
         private readonly IMapper _mapper;
         private readonly IVehicleService _vehicleService;
 
-        public VehiclesController(IMapper mapper, IVehicleService vehicleService)
+        private readonly IVehicleRepository _vehicleRepository;
+        private readonly ICarParkRepository _carParkRepository;
+
+        public VehiclesController(IMapper mapper, IVehicleService vehicleService, IVehicleRepository vehicleRepository, ICarParkRepository carParkRepository)
         {
             _mapper = mapper;
             _vehicleService = vehicleService;
+            _vehicleRepository = vehicleRepository;
+            _carParkRepository = carParkRepository;
         }
 
         [HttpGet]

@@ -8,6 +8,6 @@ namespace CarParkSystem.Core.DTOs
 {
     public class FeeDto
     {
-        public decimal ParkingFee { get; set; }
+        public decimal Fee { get; set; }
     }
 }

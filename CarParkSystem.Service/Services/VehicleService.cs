@@ -8,6 +8,7 @@ using CarParkSystem.Repository.Repositories;
 using CarParkSystem.Repository.UnitOfWorks;
 using CarParkSystem.Service.Exceptions;
 using CarParkSystem.Service.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,17 @@ namespace CarParkSystem.Service.Services
     public class VehicleService : GenericService<Vehicle>, IVehicleService
     {
         private readonly IVehicleRepository _vehicleRepository;
+        private readonly ICarParkRepository _carParkRepository;
+        private readonly ICarParkService _carParkService;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public VehicleService(IGenericRepository<Vehicle> repository, IUnitOfWork unitOfWork, IMapper mapper, IVehicleRepository vehicleRepository) : base(repository, unitOfWork)
+        public VehicleService(IGenericRepository<Vehicle> repository, IUnitOfWork unitOfWork, IMapper mapper, IVehicleRepository vehicleRepository, ICarParkRepository carParkRepository, ICarParkService carParkService) : base(repository, unitOfWork)
         {
             _mapper = mapper;
             _vehicleRepository = vehicleRepository;
+            _carParkRepository = carParkRepository;
+            _carParkService = carParkService;
         }
 
         public async Task<CustomResponseDto<List<VehicleWithCategoryDto>>> GetVehicleWithCategory()
@@ -96,7 +101,7 @@ namespace CarParkSystem.Service.Services
 
             var fee = new FeeDto()
             {
-                ParkingFee = parkingFee
+                Fee = parkingFee
             };
 
             //await UpdateAsync(vehicle);
@@ -107,7 +112,7 @@ namespace CarParkSystem.Service.Services
         }
         
 
-        public async Task<CustomResponseDto<NoContentDto>> CarWashForFirstClassVehicle(int vehicleId)
+        public async Task<CustomResponseDto<FeeDto>> CarWashForFirstClassVehicle(int vehicleId)
         {
             var hasVehicle = await _vehicleRepository.GetSingleVehicleWithCategory(vehicleId);
 
@@ -118,15 +123,26 @@ namespace CarParkSystem.Service.Services
 
             if (hasVehicle.Category.Name == "First Class")
             {
-                return CustomResponseDto<NoContentDto>.Success(200);
-            }
+                var carPark = await _carParkService.GetByIdAsync(4); // TODO: Bu şekilde sabit bir otopark Id'si kullanmak doğru değil. Daha sonra düzeltilecek.
 
-            // TODO: Burada gerekli bussiness işlemi yapılacak
+                if (carPark != null)
+                {
+
+                    var carWashFee = carPark.CarWashFee;
+
+                    var fee = new FeeDto()
+                    {
+                        Fee = carWashFee
+                    };
+
+                    return CustomResponseDto<FeeDto>.Success(200, fee);
+                }
+            }
 
             throw new ClientSideException("Bu araç 1. sınıf bir araç değil, araç yıkama hizmeti sunulamaz.");
         }
 
-        public async Task<CustomResponseDto<NoContentDto>> TireChangeForSecondClassVehicle(int vehicleId)
+        public async Task<CustomResponseDto<FeeDto>> TireChangeForSecondClassVehicle(int vehicleId)
         {
             var hasVehicle = await _vehicleRepository.GetSingleVehicleWithCategory(vehicleId);
 
@@ -137,9 +153,21 @@ namespace CarParkSystem.Service.Services
 
             if (hasVehicle.Category.Name == "Second Class")
             {
-                return CustomResponseDto<NoContentDto>.Success(200);
+                var carPark = await _carParkService.GetByIdAsync(4); // TODO: Bu şekilde sabit bir otopark Id'si kullanmak doğru değil. Daha sonra düzeltilecek.
+
+                if (carPark != null) {
+                    
+                    var tireChangeFee = carPark.TireChangeFee;
+
+                    var fee = new FeeDto()
+                    {
+                        Fee = tireChangeFee
+                    };
+
+                    return CustomResponseDto<FeeDto>.Success(200, fee);
+                }
             }
-            
+
             throw new ClientSideException("Bu araç 2. sınıf bir araç değil, lastik değiştirme hizmeti sunulamaz.");
         }
     }
