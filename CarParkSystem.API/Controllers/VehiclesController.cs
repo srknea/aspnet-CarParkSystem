@@ -93,9 +93,9 @@ namespace CarParkSystem.API.Controllers
         [HttpPost("{vehicleId}")]
         public async Task<IActionResult> ExitVehicle(int vehicleId)
         {
-            var resut = await _vehicleService.ExitVehicle(vehicleId);
+            var result = await _vehicleService.ExitVehicle(vehicleId);
 
-            return Ok(resut);
+            return Ok(result);
         }
 
         [HttpGet]

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkSystem.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : CustomBaseController
     {
@@ -38,28 +38,28 @@ namespace CarParkSystem.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
 
-            var product = await _categoryService.GetByIdAsync(id);
+            var category = await _categoryService.GetByIdAsync(id);
 
-            var productDto = _mapper.Map<CategoryDto>(product);
+            var categoryDto = _mapper.Map<CategoryDto>(category);
 
-            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(200, productDto));
+            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(200, categoryDto));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(CategoryDto productDto)
+        public async Task<IActionResult> Save(CategoryDto categoryDto)
         {
-            var product = await _categoryService.AddAsync(_mapper.Map<Category>(productDto));
+            var category = await _categoryService.AddAsync(_mapper.Map<Category>(categoryDto));
             
-            var productsDto = _mapper.Map<CategoryDto>(product);
+            var dto = _mapper.Map<CategoryDto>(category);
 
-            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(201, productsDto));
+            return CreateActionResult(CustomResponseDto<CategoryDto>.Success(201, dto));
             // 201 : Oluşturuldu anlamında kullanılır. İşlem başarılı ise 201 döndürülebilir.
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(CategoryUpdateDto productUpdateDto)
+        public async Task<IActionResult> Update(CategoryUpdateDto categoryUpdateDto)
         {
-            await _categoryService.UpdateAsync(_mapper.Map<Category>(productUpdateDto));
+            await _categoryService.UpdateAsync(_mapper.Map<Category>(categoryUpdateDto));
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
@@ -67,20 +67,20 @@ namespace CarParkSystem.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
-            var product = await _categoryService.GetByIdAsync(id);
+            var category = await _categoryService.GetByIdAsync(id);
 
-            await _categoryService.RemoveAsync(product);
+            await _categoryService.RemoveAsync(category);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
-        [HttpGet("[action]/{categoryId}")]
+        [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetSingleCategoryByIdWithVehicles(int categoryId)
         {
             return CreateActionResult(await _categoryService.GetSingleCategoryByWithVehicleAsync(categoryId));
         }
 
-        [HttpGet("[action]/{categoryName}")]
+        [HttpGet("{categoryName}")]
         public async Task<IActionResult> GetSingleCategoryByNameWithVehicles(string categoryName)
         {
             return CreateActionResult(await _categoryService.GetSingleCategoryByNameWithVehicleAsync(categoryName));

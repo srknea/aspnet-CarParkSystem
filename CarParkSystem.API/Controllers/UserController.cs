@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkSystem.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : CustomBaseController
     {
@@ -17,7 +17,6 @@ namespace CarParkSystem.API.Controllers
             _userService = userService;
         }
 
-        //api/user
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
