@@ -13,7 +13,8 @@ namespace CarParkSystem.Core.DTOs
         public string LicensePlate { get; set; }
         public int ModelYear { get; set; }
         public string ModelName { get; set; }
-        public double EnginePowerKilowatt { get; set; } // Engine power in kW 
+        public double Torque { get; set; }
+        public int EngineRPM { get; set; }
         public int CategoryId { get; set; }
         public DateTime EntryTime { get; set; }
     }

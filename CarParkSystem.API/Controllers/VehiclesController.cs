@@ -127,6 +127,12 @@ namespace CarParkSystem.API.Controllers
         {
             return CreateActionResult(await _vehicleService.TireChangeForSecondClassVehicle(vehicleId));
         }
+
+        [HttpPost("{vehicleId}")]
+        public async Task<IActionResult> CalculateHorsepower(int vehicleId)
+        {
+            return CreateActionResult(await _vehicleService.CalculateHorsepower(vehicleId));
+        }
     }
 }
     

@@ -13,7 +13,8 @@ namespace CarParkSystem.Core.Model
         public string LicensePlate { get; set; }
         public int ModelYear { get; set; }
         public string ModelName { get; set; }
-        public double EnginePowerKilowatt { get; set; } // Engine power in kW
+        public double Torque { get; set; } // Tork (Nm cinsinden)
+        public int EngineRPM { get; set; } // Motorun Devir Hızı (RPM)
         public DateTime EntryTime { get; set; }
         public DateTime? ExitTime { get; set; }
         public int CategoryId { get; set; }

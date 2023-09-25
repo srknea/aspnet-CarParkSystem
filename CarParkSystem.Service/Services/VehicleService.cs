@@ -170,5 +170,24 @@ namespace CarParkSystem.Service.Services
 
             throw new ClientSideException("Bu araç 2. sınıf bir araç değil, lastik değiştirme hizmeti sunulamaz.");
         }
+
+        public async Task<CustomResponseDto<HorsePowerDto>> CalculateHorsepower(int vehicleId)
+        {
+            var vehicle = await _vehicleRepository.GetByIdAsync(vehicleId);
+
+            if (vehicle == null)
+            {
+                throw new NotFoundException($"Vehicle with Id '{vehicleId}' not found");
+            }
+
+            double horsepower = (vehicle.Torque * vehicle.EngineRPM) / 5252;
+
+            var result = new HorsePowerDto()
+            {
+                HorsePower = horsepower
+            };
+
+            return CustomResponseDto<HorsePowerDto>.Success(200, result);
+        }
     }
 }

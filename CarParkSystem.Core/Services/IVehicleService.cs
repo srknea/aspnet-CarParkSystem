@@ -19,5 +19,7 @@ namespace CarParkSystem.Core.Services
         Task<CustomResponseDto<FeeDto>> CarWashForFirstClassVehicle(int vehicleId);
 
         Task<CustomResponseDto<FeeDto>> TireChangeForSecondClassVehicle(int vehicleId);
+
+        Task<CustomResponseDto<HorsePowerDto>> CalculateHorsepower(int vehicleId);
     }
 }
