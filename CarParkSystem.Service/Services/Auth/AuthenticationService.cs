@@ -48,7 +48,7 @@ namespace CarParkSystem.Service.Services.Auth
             {
                 throw new ClientSideException("Email or Password is wrong");
             }
-            var token = _tokenService.CreateToken(user); // Token oluşturuldu
+            var token = await _tokenService.CreateTokenAsync(user); // Token oluşturuldu
 
             var userRefreshToken = await _userRefreshTokenService.Where(x => x.UserId == user.Id).SingleOrDefaultAsync(); // Kullanıcının refresh token'ı var mı? 
 
@@ -100,7 +100,7 @@ namespace CarParkSystem.Service.Services.Auth
                 throw new NotFoundException("User Id not found");
             }
 
-            var tokenDto = _tokenService.CreateToken(user); // Token oluşturuldu
+            var tokenDto = await _tokenService.CreateTokenAsync(user); // Token oluşturuldu
 
             existRefreshToken.Code = tokenDto.RefreshToken;
             existRefreshToken.Expiration = tokenDto.RefreshTokenExpiration;
