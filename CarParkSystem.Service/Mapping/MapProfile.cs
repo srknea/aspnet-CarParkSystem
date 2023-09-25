@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CarParkSystem.Core.DTOs;
+using CarParkSystem.Core.DTOs.Auth;
 using CarParkSystem.Core.Model;
+using CarParkSystem.Core.Model.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ namespace CarParkSystem.Service.Mapping
     {
         public MapProfile()
         {
+            CreateMap<AppUserDto, AppUser>().ReverseMap();
+
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CategoryWithVehiclesDto>();
             CreateMap<CategoryUpdateDto, Category>();
