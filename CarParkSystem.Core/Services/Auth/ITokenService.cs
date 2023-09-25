@@ -11,7 +11,7 @@ namespace CarParkSystem.Core.Services.Auth
 {
     public interface ITokenService
     {
-        TokenDto CreateToken(AppUser userApp);
+        Task<TokenDto> CreateTokenAsync(AppUser userApp);
         ClientTokenDto CreateTokenByClient(Client client);
     }
 }
