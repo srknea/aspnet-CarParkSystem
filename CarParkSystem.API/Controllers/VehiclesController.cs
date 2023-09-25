@@ -6,6 +6,7 @@ using CarParkSystem.Core.Repositories;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Repository.Repositories;
 using CarParkSystem.Service.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using System.Xml;
 
 namespace CarParkSystem.API.Controllers
 {
+    [Authorize(Roles = "admin,manager")]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class VehiclesController : CustomBaseController

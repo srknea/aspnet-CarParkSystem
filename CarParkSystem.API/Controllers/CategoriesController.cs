@@ -3,11 +3,13 @@ using CarParkSystem.Core.DTOs;
 using CarParkSystem.Core.Model;
 using CarParkSystem.Core.Services;
 using CarParkSystem.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarParkSystem.API.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : CustomBaseController

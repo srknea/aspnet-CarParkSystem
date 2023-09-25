@@ -11,5 +11,7 @@ namespace CarParkSystem.Core.DTOs
         public string Name { get; set; }
         public bool IsOpen { get; set; }
         public decimal HourlyRate { get; set; }
+        public decimal CarWashFee { get; set; }
+        public decimal TireChangeFee { get; set; }
     }
 }
